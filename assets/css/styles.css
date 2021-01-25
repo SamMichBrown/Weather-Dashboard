@@ -1,0 +1,58 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background:rgb(219, 219, 219)
+    
+  }
+  
+header  {
+    background: rgb(25, 66, 90);
+    text-align: center;
+    
+}
+
+h1 {
+    margin-right: -345px;
+    color: rgb(255, 255, 255);
+
+}
+
+#searchNav {
+    text-align: center;
+   
+}
+
+#currentWthr {
+    margin-bottom: 10px;
+    background-color: rgb(163, 210, 241);;
+}
+
+.border {
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.historyCard {
+    border: 1px solid black;
+    border-radius: 7px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 2px;
+    padding: 10px;
+}
+
+#forecast {
+    background-color: rgb(163, 210, 241);
+
+}
+
+.col-2 {
+    background-color: rgb(32, 211, 202);
+}
+
+#searchNav {
+    background-color: rgb(163, 210, 241);
+}
+
+
+
+
+
