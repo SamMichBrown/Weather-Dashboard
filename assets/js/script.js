@@ -24,7 +24,7 @@ $("button").click(function(){
     var city = $("#searchCity").val();
     
     
-    var history = JSON.parse(localStorage.getItem('history'));
+    var history = JSON.parse(localStorage.getItem('history')) ||[];
     history.unshift(city);
     localStorage.setItem('history', JSON.stringify(history));
     renderHistory();
@@ -108,7 +108,7 @@ function createForecastCard(day) {
 }
 
 function renderHistory() {
-    var history = JSON.parse(localStorage.getItem('history'));
+    var history = JSON.parse(localStorage.getItem('history')) ||[];
     $('#searchHistory').html('');
     for (let city of history) {
         var historyEntry = $(`<div class="historyCard">${city}</div>`);
