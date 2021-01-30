@@ -1,25 +1,5 @@
-//api.openweathermap.org/data/2.5/weather?q=toronto&appid=e1ab33a195a5cb9cfe263d1ff6af4c6d
 
-//$("button").click(function(){
-    // $.ajax({url: "demo_test.txt", success: function(result){
-    //     $("#div1").html(result);
-    //   }});
-    // });
-
-    //var currentDate = document.getElementById("currentDay");
-    //currentDay.innerHTML = currentTime;
-
-// //$("#searchBtn").click(function(){
-//     $.ajax({
-//         url: "api.openweathermap.org/data/2.5/weather?q=toronto&appid=e1ab33a195a5cb9cfe263d1ff6af4c6d",
-//         success: function(response){
-//             console.log(response)
-//         }
-//     })
-// })
-//var date = new Date(1611284400); var dt = 1611277734 * 1000; var date = new Date(dt);
-
-
+//On click search for city
 $("button").click(function(){
     var city = $("#searchCity").val();
     
@@ -33,10 +13,10 @@ $("button").click(function(){
    
     
 })
-
+// Get Current Weather Forecast Info
 function getWeatherForecast(city){
     
-    var urlCurrent = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=e1ab33a195a5cb9cfe263d1ff6af4c6d`
+    var urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=e1ab33a195a5cb9cfe263d1ff6af4c6d`
 
     fetch(urlCurrent).then(function (response) {
         return response.json();
@@ -49,6 +29,7 @@ function getWeatherForecast(city){
         var month = date.getMonth() + 1;
         var year = date.getFullYear();
         var dateStr = `${day}/${month}/${year}`;
+        // Add to page as html
         $("#cityTime").html(dateStr);
         var temperature = json.main.temp;
         $("#tempNum").html(temperature);
@@ -57,14 +38,14 @@ function getWeatherForecast(city){
         var windSpeed = json.wind.speed;
         $("#windNum").html(windSpeed);
         var icon = json.weather[0].icon;
-        var imgUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`
+        var imgUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
         $("#icon").attr("src", imgUrl);
 
         var lat = json.coord.lat;
         var lon = json.coord.lon;
-
-
-        var urlWeekly = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,hourly&appid=e1ab33a195a5cb9cfe263d1ff6af4c6d`
+           
+        // Get Forcast for whole week
+        var urlWeekly = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,hourly&appid=e1ab33a195a5cb9cfe263d1ff6af4c6d`
         fetch(urlWeekly)
         .then(function (response){
             return response.json();
@@ -80,7 +61,7 @@ function getWeatherForecast(city){
     });
 }
 
-
+// Create the forcast cards
 function createForecastCard(day) {
   var card =  $('<div class="col-2 border"></div>');
   var dateTime = day.dt;
@@ -91,9 +72,9 @@ function createForecastCard(day) {
   var dateStr = `${calDay}/${month}/${year}`;
   var cardDate = $(`<span>${dateStr}</span>`);
   card.append(cardDate);
-
+// Allow icons to appear
   var icon = day.weather[0].icon;
-  var imgUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`
+  var imgUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
   var cardIcon = $(`<img src=${imgUrl}></img>`)
   card.append(cardIcon);
 
@@ -106,7 +87,7 @@ function createForecastCard(day) {
 
   return card
 }
-
+// local storage
 function renderHistory() {
     var history = JSON.parse(localStorage.getItem('history')) ||[];
     $('#searchHistory').html('');
