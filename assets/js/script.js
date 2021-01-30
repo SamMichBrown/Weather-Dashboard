@@ -75,7 +75,7 @@ function createForecastCard(day) {
 // Allow icons to appear
   var icon = day.weather[0].icon;
   var imgUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
-  var cardIcon = $(`<img src=${imgUrl}></img>`)
+  var cardIcon = $(`<br><img src=${imgUrl}></img>`)
   card.append(cardIcon);
 
   var dayTemp = day.temp.day;
