@@ -64,7 +64,7 @@ function getWeatherForecast(city){
         var lon = json.coord.lon;
 
 
-        var urlWeekly = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,hourly&appid=e1ab33a195a5cb9cfe263d1ff6af4c6d`
+        var urlWeekly = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,hourly&appid=e1ab33a195a5cb9cfe263d1ff6af4c6d`
         fetch(urlWeekly)
         .then(function (response){
             return response.json();
